@@ -17,81 +17,83 @@ se debe sumar un 10% de ingresos brutos en informar del impuesto con el siguient
 function CalcularPrecio () 
 {   
 var lamparas;
+var precioDscto;
 var marcas;
-var precioFinal;
+var precioBruto;
+var dscto
 var impuesto;
 var importeFinal;
+
 lamparas=txtIdCantidad.value;
 lamparas=parseInt(lamparas);
-marcas= marca.value;
+precioDscto=txtIdprecioDescuento.value; //precio cn descuento
+marcas= marca.value; 
+
+precioBruto=lamparas*35
 
 if(lamparas>5){
-	precioFinal=0.5*(lamparas*35);
-    if(precioFinal>119){
-     	impuesto=0.1*(lamparas*35);
-        importeFinal=precioFinal+impuesto;
-        txtIdprecioDescuento.value=importeFinal.toFixed(2);
-        alert("Usted pago "+ impuesto + " de IIBB" + " Siendo el Importe a pagar: "+ importeFinal.toFixed(2) + " pesos");
-     }
-     else {     	
-        precioFinal=0.5*(lamparas*35);
-     	txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
-     }    
+	dscto=50
+	precioDscto=precioBruto-(dscto*precioBruto)/100;
+        if(precioDscto>119 ){        
+     	   impuesto=0.1*precioBruto;        
+     	   importeFinal=precioDscto+impuesto;        //txtIdprecioDescuento.value=importeFinal.toFixed(2);
+           alert("Usted pago "+ impuesto + " de IIBB" + "\rSiendo el Importe a pagar: "+ importeFinal + " pesos");
+        }
+        else{
+           alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");	
+        }
 }
 else{
-            if(lamparas==5){
-                 if(marcas=="ArgentinaLuz"){
-     	           precioFinal=0.6*(lamparas*35);
-     	           txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	           alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+      if(lamparas==5 ){ 
+            	if(marcas=="ArgentinaLuz"){            		
+                 dscto=40;
+                 precioDscto=precioBruto-(dscto*precioBruto)/100;                	
+     	          alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");
                  }
                  else{
-        	     precioFinal=0.7*(lamparas*35);
-     	         txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	         alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+        	        dscto=30;  
+        	        precioDscto=precioBruto-(dscto*precioBruto)/100;     	     	       
+     	            alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");
                  }
             }
             else{
-                if(lamparas==4){
+                if(lamparas==4){                	
                         if(marcas=="FelipeLamparas" || marcas=="ArgentinaLuz"){
-     	                 precioFinal=0.75*(lamparas*35);
-     	                 txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	                 alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+     	                dscto=25; 
+     	                precioDscto=precioBruto-(dscto*precioBruto)/100;   	                
+     	                alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");
                         }
                         else{
-     	                precioFinal=0.8*(lamparas*35);
-     	                txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	                alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+                        	dscto=20;
+                        	precioDscto=precioBruto-(dscto*precioBruto)/100;
+                        	alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");
                         }
                 }
                 else{
-                    if(lamparas==3){
+                    if(lamparas==3){                    	
                             if(marcas=="ArgentinaLuz"){
-    	                      precioFinal=0.85*(lamparas*35);
-     	                      txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	                      alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+    	                      dscto=15;
+    	                      precioDscto=precioBruto-(dscto*precioBruto)/100;
+     	                      alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");
      	                    }
      	                    else{
-     		                    if(marcas="FelipeLamparas"){
-     			                     precioFinal=0.9*(lamparas*35);
-     	                             txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	                             alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+     		                    if(marcas=="FelipeLamparas"){
+     			                       dscto=10;
+     			                       precioDscto=precioBruto-(dscto*precioBruto)/100;
+     			                       alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");
      		                    }
      		                    else{
-     			                     precioFinal=0.95*(lamparas*35);
-     	                             txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	                             alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+     			                     dscto=5; 
+     			                     precioDscto=precioBruto-(dscto*precioBruto)/100;			                     
+     	                             alert("El dscto es de: "+ dscto + "%\r"+ "El importe a pagar es: "+ precioDscto + " pesos");
      		                    }
      	                    }
                     }
                     else{
-            	         precioFinal=lamparas*35;
-     	                 txtIdprecioDescuento.value=precioFinal.toFixed(2);
-     	                 alert("El importe a pagar es: "+ precioFinal.toFixed(2) + " pesos");
+            	         precioBruto;
+     	                 alert("El importe a pagar es: "+ precioBruto + " pesos");
                     }
                 }
             }
 }
-
 }
